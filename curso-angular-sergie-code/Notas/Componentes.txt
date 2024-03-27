@@ -1,0 +1,46 @@
+Al crear un componente, con
+ ng generate component nombre-del-componente
+Se generan 4 archivos
+- archivo del componente (nombre-del-componente.component.ts)
+- archivo html de la plantilla (nombre-del-componente.component.html)
+- archivo de estilos CSS (nombre-del-componente.component.csss)
+- un archivo de prueba (nombre-del-componente.component.spec.ts)
+
+Input
+Entre un componente padre e hijo, puedes establecer comunicación (similar a los props en React)
+Esto se establece de la siguiente forma: En el componente hijo, se declara el Input en el que recibirá el valor
+ @Input() datoEntrada: string;
+En el componente padre, vinculas los datos a la propiedad de inputo con la sintaxis de corchetes [].
+ <app-hijo [datoEntrada]="valorDesdePadre"></app-hijo>
+De esta forma, cuando el valor de la propiedad en el padre cambie, automáticamente se actualizará en el hijo
+ valor valorDesdePadre = "Hola, mundo!";
+En el componente hijo, puedes utilizar la propiedad de entrada como cualquier otra propiedad local.
+<p>{{datoEntrada}}</p>
+
+Output
+A diferencia del Input que va de Padre -> Hijo, el output, sirve para emitir eventos desde el hijo hacia el padre.
+//En el hijo
+ @Output messageEvent = new EventEmitter<string>();
+ message: string = '';
+ 
+ sendMessage(){
+  this.messageEvent.emit(this.message);
+ }
+
+  <div>
+    <label for="childInput">Mensaje:</label>
+    <input id="childInput" [(ngModel)]="message"/> //Esto realiza un binding entre el valor del input y el atributo message
+    <button (click)="sendMessage()">Enviar Mensaje</button> //Al hacer click en este botón, se llamará al evento/método sendMessage()
+  </div>
+
+//En el padre
+ receivedMessage: string = '';
+
+ receiveMessage(message: string) {
+  this.receivedMessage = message;
+ }
+
+  <div>
+    <app-child (messageEvent)="receiveMessage($event)></app-child>
+    <p>Mensaje recibido en el padre: {{receivedMessage}}</p>
+  </div>
