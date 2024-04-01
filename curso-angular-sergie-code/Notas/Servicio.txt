@@ -1,0 +1,33 @@
+Servicios
+Clase de Typescript que se utiliza para organizar y compartir lógica, datos o funcionalidades comunes entre diferentes componentes de una aplicación. Los servicios son una parte fundamental de la arquitectura de Angular y proporcionan una forma de centralizar y reutilizar la lógica que no está relacionada directamente con la interfaz de usuario.
+
+Como crear un servicio:
+  ng generate service nombre-del-servicio
+
+Como luce un servicio?
+  import { Injectable } from '@angular/core';
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class MiServicio {
+    constructor() { }
+  }
+
+Que es una Dependencia?
+Son los recursos externos y módulos de código que una aplicación necesita para funcionar correctamente. Las dependencias en Angular se gestionan principalmente a través del sistema de inyección de dependencias (DI), que es una característica clave del framework.
+
+Como se inyecta una dependencia?
+Se importa en el componente
+  import { MiServicio } from './mi-servicio.service';
+Y en el constructor, se recibe el servicio (?)
+  @Component({
+    selector: 'app-mi-componente',
+    templateUrl: './mi-componente.component.html'
+  })
+  export class MiComponente {
+    constructor (private miServicio: MiServicio){
+
+    }
+  }
+

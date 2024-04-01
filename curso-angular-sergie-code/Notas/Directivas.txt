@@ -1,0 +1,22 @@
+Son instrucciones en el marcado HTML que proporcionan funcionalidad adicional a los elementos DOM existentes o personalizan su comportamiento. Las directivas son un componente clave en la construcción de aplicaciones web en Angular, ya que permiten extender y manipular el DOM de manera declarativa, lo que facilita la creación de interfaces de usuario dinámicas e interactivas. Angular proporciona varias directivas incorporadas y también permite la creación de directivas personalizadas.
+
+Como se genera una directiva personalizada con CLI:
+  ng generate directive nombre-de-la-directiva
+
+Como luce una directiva:
+  import { Directive, ElementRef } from '@angular/core';
+
+  @Directive({
+    selector: '[appMiDirectiva]'
+  })
+  export class MiDirectivaDirective {
+    constructor(private el: ElementRef) {
+      // Accede al elemento del DOM en el que se aplica la directiva (this.el.nativeElement)
+      this.el.nativeElement.style.backgroundColor = 'yellow';
+    }
+  }
+
+Como se llama a una directiva:
+  <div appMiDirectiva>
+    Este es un elemento con mi directiva personalizada.
+  </div>

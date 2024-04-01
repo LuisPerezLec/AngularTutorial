@@ -16,4 +16,14 @@ export class HijoComponent {
     this.mensajeDesdeHijo.emit(this.mensajeHijoAPadre)
   }
 
+  @Output() incrementarEvent = new EventEmitter<void>();
+  @Output() decrementarEvent = new EventEmitter<void>();
+
+  incrementar(){
+    this.incrementarEvent.emit();
+  }
+  decrementar(){
+    this.decrementarEvent.emit();
+  }
+
 }

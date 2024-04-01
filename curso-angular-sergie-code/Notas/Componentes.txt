@@ -1,3 +1,6 @@
+Componentes
+Es un bloque fundamental de construcción para la creación de interfaces de usuario (UI) en una aplicación web. Los componentes son responsables de definir cómo se ve y se comporta una parte específica de la interfaz de usuario de la aplicación. Cada componente representa un elemento visual o funcional de la página web, como un encabezado, un pie de página, un formulario, una lista de elementos, etc.
+
 Al crear un componente, con
  ng generate component nombre-del-componente
 Se generan 4 archivos

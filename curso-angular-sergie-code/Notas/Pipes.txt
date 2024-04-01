@@ -1,0 +1,21 @@
+Son una característica que permite formatear y transformar datos en la vista de una aplicación web de manera sencilla y legible.Los pipes son funciones que toman un valor de entrada (como una cadena de texto, un número o un objeto) y lo procesan para proporcionar una representación modificada o formateada en la interfaz de usuario.
+Los pipes se utilizan en las plantillas HTML de Angular y se aplican utilizando el símbolo de barra vertical |. Algunos ejemplos comunes de uso de pipes incluyen el formateo de fechas, números, monedas, texto en mayúsculas o minúsculas, entre otros.
+Angular proporciona una serie de pipes integrados, como DatePipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, DecimalPipe, PrecentPipe, entre otros. Además, también puedes crear tus propios pipes personalizados cuando necesites realizar transformaciones específicas.
+
+Como se genera un Pipe con CLI:
+  ng generate pipe nombre-del-pipe
+
+Como luce un Pipe:
+  import { Pipe, PipeTransform } from '@angular/core';
+
+  @Pipe({
+    name: 'miPipe
+  })
+  export class MiPipe implements PipeTransform{
+    transform(valor: any): any {
+      return valor.toUpperCase();
+    }
+  }
+
+Como se utiliza un Pipe:
+<p>{{ texto | miPipe }}</p>
